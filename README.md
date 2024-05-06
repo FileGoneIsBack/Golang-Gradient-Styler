@@ -29,3 +29,4 @@ Tags:
 simple program i made cuz bored and yall keep saying i cant code so this sum public proof 
 
 ![image](https://github.com/FileGoneIsBack/Golang-Gradient-Styler/assets/168943128/adcd154c-3a04-4f1d-920c-b1500c2038c0)
+https://discord.gg/4wQycNAGf5
