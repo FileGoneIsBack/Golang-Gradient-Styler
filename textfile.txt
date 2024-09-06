@@ -1,6 +1,0 @@
-<<Start: #ee05f2>> ====================== <<End: #f20521>>
-This is <<Start: Bold>>bold<<End: Bold>> text.
-This is <<Start: Strike>>strike<<End: Strike>> text.
-This is <<Start: Underline>>underline<<End: Underline>> text.
-along with some normal text
-<<Start: #ee05f2>> =====================  <<End: #f20521>>
