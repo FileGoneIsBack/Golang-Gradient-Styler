@@ -1,0 +1,51 @@
+// this is remake of my color tool made in goland but this more simple in c lolz
+// https://github.com/FileGoneIsBack/Golang-Gradient-Styler
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+
+void hexToRGB(const char *hexColor, int *r, int *g, int *b) {
+    sscanf(hexColor + 1, "%02x%02x%02x", r, g, b);  // Parse hex string to RGB
+}
+
+void rgbToANSI(int r, int g, int b, char *ansiCode) {
+    sprintf(ansiCode, "\033[38;2;%d;%d;%dm", r, g, b);  // Format the ANSI escape code
+}
+
+void applyGradient(const char *text, const char *startColor, const char *endColor) {
+    int startR, startG, startB, endR, endG, endB;
+    hexToRGB(startColor, &startR, &startG, &startB);  // Get start color RGB
+    hexToRGB(endColor, &endR, &endG, &endB);          // Get end color RGB
+
+    int len = strlen(text);  // Get the length of the input text
+    for (int i = 0; i < len; i++) {
+        char ansiCode[20];
+        int r = startR + (int)round((double)(endR - startR) * i / (len - 1));
+        int g = startG + (int)round((double)(endG - startG) * i / (len - 1));
+        int b = startB + (int)round((double)(endB - startB) * i / (len - 1));
+
+        // Generate the ANSI escape code for the current color
+        rgbToANSI(r, g, b, ansiCode);
+
+        // Print the character with its color
+        printf("%s%c", ansiCode, text[i]);
+    }
+
+    // Reset color
+    printf("\033[0m");
+}
+
+int main() {
+    char text[100];  // Buffer to store input text (up to 99 characters)
+    const char *startColor = "#ff0000";  // Red
+    const char *endColor = "#00ff00";    // Green
+
+    printf("Enter text:\n");
+    fgets(text, sizeof(text), stdin);  // Read the input text
+
+    applyGradient(text, startColor, endColor);  // Apply the color gradient to the text
+    printf("\n");
+
+    return 0;
+}
